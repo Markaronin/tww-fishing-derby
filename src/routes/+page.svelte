@@ -1,6 +1,8 @@
 <script lang="ts">
+  import "../app.css";
+
   import { browser } from "$app/environment";
-  import { defaultFish, type Fish } from "./fish";
+  import { defaultFish, locations, pools, type Fish } from "./fish";
   import FishBox from "./FishBox.svelte";
 
   const storageKey = "FoundFish";
@@ -14,7 +16,8 @@
         const parsedValue = JSON.parse(rawValue);
         if (
           Array.isArray(parsedValue) &&
-          parsedValue.length === loadedFish.length
+          parsedValue.length === loadedFish.length &&
+          parsedValue.every((v) => typeof v === "boolean")
         ) {
           parsedValue.forEach((found, i) => (loadedFish[i].found = found));
         }
@@ -40,13 +43,27 @@
   <title>TWW Fishing Derby Helper</title>
 </svelte:head>
 
-<h1>Unfound</h1>
+<h1>Zones</h1>
+{#each locations as zone}
+  <div>{zone}</div>
+{/each}
+<hr />
+
+<h1>Pools</h1>
+{#each pools as pool}
+  <div>{pool}</div>
+{/each}
+<hr />
+
+<h1>Weird fish</h1>
 {#each fish as f}
-  {#if !f.found}
+  {#if !f.found && f.weird}
     <FishBox bind:fish={f} />
   {/if}
 {/each}
-<h1>Found</h1>
+<hr />
+
+<h1>Found Fish</h1>
 {#each fish as f}
   {#if f.found}
     <FishBox bind:fish={f} />
