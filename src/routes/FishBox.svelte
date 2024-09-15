@@ -4,4 +4,7 @@
   export let fish: Fish;
 </script>
 
-<p>{fish.name}</p>
+<div>
+  <input type="checkbox" bind:checked={fish.found} />
+  {fish.name}
+</div>
