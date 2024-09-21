@@ -2,8 +2,6 @@
 # High priority
 - Basic styling
     - Bigger checkboxes/text
-- Show pools where I can catch the most fish
-    - Show zones with the most potential fish caught
 
 # Low priority
 - Show custom text for non-weird fish
