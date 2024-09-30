@@ -2,7 +2,13 @@ FROM ubuntu:22.04
 
 RUN <<EOF
     apt-get update
-    apt-get -y install git curl
+    apt-get -y install git curl unzip
+EOF
+RUN <<EOF
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip awscliv2.zip
+    ./aws/install
+    rm -r ./awscliv2.zip ./aws
 EOF
 RUN <<EOF
     curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh 
