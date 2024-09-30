@@ -2,7 +2,8 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "maattdd.gitless"
+                "maattdd.gitless",
+                "svelte.svelte-vscode"
             ],
             "settings": {
                 "terminal.integrated.defaultProfile.linux": "bash",
