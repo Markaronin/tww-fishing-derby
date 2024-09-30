@@ -62,11 +62,12 @@
                     f.schools.some((s) => poolLocations(s).includes(zone)) ||
                     f.name === "Cursed Ghoulfish" ||
                     (f.name === "Awoken Coelacanth" && zone === "Azj-Kahet"),
-            ).length}) ({pools
+            ).length} fish left) ({pools
             .filter((pool) => poolLocations(pool).includes(zone))
             .filter((pool) =>
                 fish.some((f) => !f.found && f.schools.includes(pool)),
-            )})
+            )
+            .join(", ")})
     </h3>
 {/each}
 <hr />
@@ -84,6 +85,14 @@
         </ol>
     {/if}
 {/each}
+{#each pools as pool}
+    {#if fish.every((f) => !f.schools.includes(pool) || f.found)}
+        <h3 class="poolTitle finished">
+            {pool}
+        </h3>
+    {/if}
+{/each}
+<hr />
 
 <h1>Weird fish</h1>
 {#each fish as f}
@@ -96,7 +105,9 @@
 <h1>
     Found Fish <button
         on:click={() => {
-            fish = fish.map((f) => ({ ...f, found: false }));
+            if (confirm("Are you sure you want to reset the found fish?")) {
+                fish = fish.map((f) => ({ ...f, found: false }));
+            }
         }}>Reset</button
     >
 </h1>
@@ -114,5 +125,9 @@
     .poolFishList {
         margin-top: 0px;
         margin-bottom: 0px;
+    }
+    .finished {
+        text-decoration: line-through;
+        color: #888;
     }
 </style>

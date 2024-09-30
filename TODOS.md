@@ -1,9 +1,3 @@
-
-# High priority
-- Basic styling
-    - Bigger checkboxes/text
-
-# Low priority
 - Show custom text for non-weird fish
 - Show wow tooltips (https://www.wowdb.com/tooltips)
 - Mouseover pool to show zones and/or picture

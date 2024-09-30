@@ -4,16 +4,25 @@
     export let fish: Fish;
 </script>
 
-<div>
-    <input type="checkbox" bind:checked={fish.found} />
-    <span class="fishName {fish.rarity}">{fish.name}</span>
-    {#if !fish.found}
-        {#if fish.weird}
-            ({fish.customText})
-        {:else}
-            ({fish.schools.join(", ")})
+<div class="fishBox">
+    <input
+        id="checkbox-{fish.name}"
+        type="checkbox"
+        bind:checked={fish.found}
+        style="transform: scale(1.2);"
+    />
+    <label for="checkbox-{fish.name}">
+        <span class="fishName {fish.rarity}">
+            {fish.name}
+        </span>
+        {#if !fish.found}
+            {#if fish.weird}
+                ({fish.customText})
+            {:else}
+                ({fish.schools.join(", ")})
+            {/if}
         {/if}
-    {/if}
+    </label>
 </div>
 
 <style>
@@ -25,5 +34,12 @@
     }
     .fishName.Rare {
         color: #0070dd;
+    }
+    .fishBox > input,
+    .fishBox > label {
+        cursor: pointer;
+    }
+    .fishBox:hover {
+        background-color: rgba(255, 255, 255, 0.2);
     }
 </style>
