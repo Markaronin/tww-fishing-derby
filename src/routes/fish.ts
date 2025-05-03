@@ -87,17 +87,17 @@ export let defaultFish: Fish[] = [
     rarity: "Common",
     weird: false,
   },
+  {
+    name: "Dornish Pike",
+    schools: ["Calm Surfacing Ripple"],
+    found: false,
+    rarity: "Common",
+    weird: false,
+  },
   // Uncommon fish
   {
     name: "Arathor Hammerfish",
     schools: ["Blood in the Water"],
-    found: false,
-    rarity: "Uncommon",
-    weird: false,
-  },
-  {
-    name: "Dornish Pike",
-    schools: ["Calm Surfacing Ripple"],
     found: false,
     rarity: "Uncommon",
     weird: false,
